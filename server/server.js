@@ -9,6 +9,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
+app.get('/', function (req, res) {
+    res.send('RESTSERVER DE @vivascastillomatias');
+  });
+
+
 require('./config/config.js');
 //method GET
 //Se utiliza para consultas
