@@ -4,7 +4,7 @@
   "description": "Aplicacion restserver del curso de nodeJS de Udemy",
   "main": "index.js",
   "scripts": {
-    "test": "node server/server.js",
+    "start": "node server/server.js",
     "nodemon": "nodemon server/server.js"
   },
   "author": "Vivas Castillo Matias Gonzalo | vivascastillomatias",
