@@ -81,4 +81,4 @@ BD MONGO-ATLAS
 
 user: admincafe
 pass: Cu6MO8zOxHwXm22d
-URL: mongodb+srv://admincafe:Cu6MO8zOxHwXm22d@cafe-rdtoq.gcp.mongodb.net/cafe
+URL: mongodb+srv://admincafe:Cu6MO8zOxHwXm22d@cafe-rdtoq.gcp.mongodb.net/cafe (para utilizar el mongo shell -> mongo + texto de la db)
