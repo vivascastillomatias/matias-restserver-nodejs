@@ -7,9 +7,11 @@ const bcrypt = require('bcrypt');
 //la biblioteca underscore se usa por convención como " _ "
 const _ = require('underscore');
 
+const { verificaToken, verificaAdminRole } = require('../middlewares/authentication.js');
+
 //method GET
 //Se utiliza para consultas
-app.get('/usuario', function (req, res) {
+app.get('/usuario', verificaToken, (req, res) => {
     //query son todos los parámetros que se establecen despues del ? en la dirección 
 
 
@@ -47,7 +49,7 @@ app.get('/usuario', function (req, res) {
 
 //method POST
 //Generalmente se utiliza para crear nuevos registros de datos
-app.post('/usuario', function (req, res) {
+app.post('/usuario',[verificaToken,verificaAdminRole], function (req, res) {
     let body = req.body;
 
     //Creamos un objeto de tipo Usuario qu se estableció su forma en models/usuario.js
@@ -80,7 +82,7 @@ app.post('/usuario', function (req, res) {
 
 //method PUT
 //Generalmente se utiliza para actualizar datos localhost:3000/parametro
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id',[verificaToken,verificaAdminRole], function (req, res) {
     let id = req.params.id;
     let body = req.body;
 
@@ -102,6 +104,14 @@ app.put('/usuario/:id', function (req, res) {
                 ok: false,
                 err
             });
+        }
+        if (usuarioDB == null) {
+            res.send({
+                ok: false,
+                err: {
+                    message: 'Usuario no encontrado'
+                }
+            })
         }else{
             //usuarioDB.password = null;
 
@@ -116,7 +126,7 @@ app.put('/usuario/:id', function (req, res) {
 
 //method DELETE
 //Generalmente se utiliza para actualizar datos
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id',[verificaToken,verificaAdminRole], function (req, res) {
 
     let id = req.params.id;
 
@@ -140,7 +150,9 @@ app.delete('/usuario/:id', function (req, res) {
             })
         }
     
-    })
+    });
+
+    //ELIMINACIÓN FISICA
     /*Usuario.findByIdAndRemove(id, (err, usuarioBorrado)=>{
         if (err) {
             return res.status(400).json({

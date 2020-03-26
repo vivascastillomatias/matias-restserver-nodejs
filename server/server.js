@@ -7,11 +7,14 @@ require('./config/config.js');
 
 // parse application/json
 app.use(bodyParser.json())
-
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(require('./routes/usuario.js'));
-    
+//app.use(require('./routes/usuario.js'));
+//
+//app.use(require('./routes/login.js'));
+
+app.use(require('./routes/index.js')); //configuración global de rutas
+
 app.get('/', function (req, res) {
     res.send('RESTSERVER DE @vivascastillomatias');
 });

@@ -27,28 +27,43 @@ Permite...
 -------------------------
 
 
-8- Definir los alcances de nuestro RESTServer
+9- Definir los alcances de nuestro RESTServer
 CRUD (ABMC)
 
-9- Encriptación de contraseñas
+10- Encriptación de contraseñas
 
-10- Validaciones personalizadas
+11- Validaciones personalizadas
 
-11- Creación de roles
+12- Creación de roles
 
-12- Conexiones con MLAB
+13- Conexiones con MLAB
 
-13- Despliegue de base de datos en la nube
+14- Despliegue de base de datos en la nube
 
-14- Conexión con Robo 3T con base de datos en la nube
+15- Conexión con Robo 3T con base de datos en la nube
 
-15- Configuración de variables de entorno
+16- Configuración de variables de entorno
 
-16- Borrado de archivos
+17- Borrado de archivos
 
-17- Eliminado físico de la base de datos
+18- Eliminado físico de la base de datos
 
-18- Eliminación por estado en un campo de la colección
+19- Eliminación por estado en un campo de la colección
+
+20- JWT
+
+21- Login personalizado
+
+22- Protección de rutas vía token
+
+23- Leer payload del token sin la firma
+
+24- Tips importantes para POSTMan
+
+25- Despliegues en Heroku para pruebas en producción
+
+26- Uso de Middleware
+
 
 
 Utiliza:
@@ -64,6 +79,8 @@ https://www.npmjs.com/package/express
 https://www.npmjs.com/package/hbs
 
 http://expressjs.com/es/guide/using-middleware.html
+
+https://www.npmjs.com/package/jsonwebtoken
 
 ###-------------------  MANEJO DE BASE DE DATOS MONGODB
 
