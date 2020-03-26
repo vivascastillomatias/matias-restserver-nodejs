@@ -8,6 +8,15 @@ process.env.PORT = process.env.PORT || 3000
 // ===============================================
 // Puerto
 // ===============================================
+//heroku config:set MONGO_URI="XXXXXXX"
+ 
+    
+    
+    
+//heroku config:get nombre
+//heroku config:unset nombre
+//heroku config:set nombre="Fernando"
+//
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
