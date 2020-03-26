@@ -93,7 +93,7 @@ app.put('/usuario/:id', function (req, res) {
         runValidators: true
     }
  
-    Usuario.findOneAndUpdate(id, datos, opciones,(err, usuarioDB) => {
+    Usuario.findByIdAndUpdate(id, datos, opciones,(err, usuarioDB) => {
     //El tercer argumento se pone entre paréntesis porque es un objeto
     //dicho objeto es el que devuelve la operacion de actualización
 
@@ -125,7 +125,7 @@ app.delete('/usuario/:id', function (req, res) {
         runValidators: true
     }
 
-    Usuario.findOneAndUpdate(id, {'estado': false}, opciones,(err, usuarioDeshabilitado) => {
+    Usuario.findByIdAndUpdate(id, {'estado': false}, opciones,(err, usuarioDeshabilitado) => {
     //El tercer argumento se pone entre paréntesis porque es un objeto,
     // dicho objeto es el que devuelve la operacion de actualización
         if (err) {
