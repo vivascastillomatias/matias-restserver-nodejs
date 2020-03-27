@@ -64,6 +64,23 @@ CRUD (ABMC)
 
 26- Uso de Middleware
 
+--------------
+
+27- Generar API Key de Google
+
+28- Generar API Secret
+
+29- Usar librerías de Google para la validación de tokens
+
+30- Tips importantes en PostMan
+
+31- Despliegues a Heroku
+
+32- Uso del Google SignIn en el Front-End
+
+33- Crear usuarios personalizados en base a respuestas de Google
+
+
 
 
 Utiliza:
@@ -99,3 +116,8 @@ BD MONGO-ATLAS
 user: admincafe
 pass: Cu6MO8zOxHwXm22d
 URL: mongodb+srv://admincafe:Cu6MO8zOxHwXm22d@cafe-rdtoq.gcp.mongodb.net/cafe (para utilizar el mongo shell -> mongo + texto de la db)
+
+
+POSTMAN
+
+https://documenter.getpostman.com/view/9755827/SzYUagWs?version=latest

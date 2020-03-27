@@ -51,14 +51,14 @@ app.get('/usuario', verificaToken, (req, res) => {
 //Generalmente se utiliza para crear nuevos registros de datos
 app.post('/usuario',[verificaToken,verificaAdminRole], function (req, res) {
     let body = req.body;
-
+    console.log(body);
     //Creamos un objeto de tipo Usuario qu se estableció su forma en models/usuario.js
     //Todo lo que viene por el POST se almancena en un nuevo objeto de tipo Usuario
 
     let usuario = new Usuario({
         nombre: body.nombre,
         email: body.email,
-        nombre: body.nombre,
+        img: body.img,
         password: bcrypt.hashSync(body.password, 10),
         role: body.role,
     })
