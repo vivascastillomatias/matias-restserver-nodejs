@@ -16,7 +16,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 // ===============================================
 // 60 seg * 60 min * 24 hr * 30 días
 
-process.env.CADUCIDAD = 60 * 60 * 24 * 30;
+process.env.CADUCIDAD = '48h';
 
 
 // ===============================================

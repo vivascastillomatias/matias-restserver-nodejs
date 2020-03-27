@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+//Modelo de datos de Usuario
 const Usuario = require('../models/usuario.js');
 const bcrypt = require('bcrypt');
 
@@ -100,26 +101,21 @@ app.put('/usuario/:id',[verificaToken,verificaAdminRole], function (req, res) {
     //dicho objeto es el que devuelve la operacion de actualización
 
         if (err) {
+            if (err.code === 11000){
+                err = {
+                    message: 'El email debe ser unico'
+                }
+            }
             return res.status(400).json({
                 ok: false,
                 err
             });
         }
-        if (usuarioDB == null) {
-            res.send({
-                ok: false,
-                err: {
-                    message: 'Usuario no encontrado'
-                }
-            })
-        }else{
-            //usuarioDB.password = null;
 
-            res.send({
-                ok: true,
-                usuario: usuarioDB
-            })
-        }
+        res.send({
+            ok: true,
+            usuario: usuarioDB
+        })
  
     })
 });
