@@ -85,7 +85,7 @@ app.post('/google', async(req, res) => {
             err
         })
     });
-    
+
     Usuario.findOne({email: googleUser.email}, (err, usuarioDB)=>{
         if (err) {
             return res.status(500).json({
@@ -93,6 +93,7 @@ app.post('/google', async(req, res) => {
                 err
             });
         }
+        
         if (usuarioDB) {
             if (usuarioDB.google === false) {
                 //Está en la base de datos pero cuando fue creado no se autenticó con google
