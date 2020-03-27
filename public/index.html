@@ -1,45 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Sign-In | Demo</title>
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="514081512674-6gjik3sf41i6olvkcct83h7icc0u8hfg.apps.googleusercontent.com">
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="514081512674-6gjik3sf41i6olvkcct83h7icc0u8hfg.apps.googleusercontent.com">
+        
+    <title>Pagina web | Demo</title>
 </head>
 <body>
+    <div class="jumbotron">
+        <h1 class="display-4">Sistema de administración | CAFÉ</h1>
+        <p class="lead">Quiero que sepas que te amo y dejo esta foto recordando nuestras vacaciones</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="about.html" role="button">Mira</a>
+    </div>
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <br><br><br>
-    <a href="#" class="g" onclick="signOut();">Sign out</a>
 
-    <script>
-        function onSignIn(googleUser) {
-        let profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        
-        let id_token = googleUser.getAuthResponse().id_token;
+    <footer>
+        Matias Gonzalo Vivas Castillo - Todos los derechos reservados
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <script src="./assets/js/bootstrap.min.js"></script>
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/google');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            console.log('Signed in as: ' + xhr.responseText);
-            };
-        xhr.send('idtoken=' + id_token);
-        }
 
-        function signOut() {
-        let auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log('User signed out.');
-    });
-  }
-    </script>
 </body>
 </html>
