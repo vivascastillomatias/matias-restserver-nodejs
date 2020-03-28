@@ -10,17 +10,43 @@
     <title>Pagina web | Demo</title>
 </head>
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">Sistema de administración | CAFÉ</h1>
-        <p class="lead">Quiero que sepas que te amo y dejo esta foto recordando nuestras vacaciones</p>
-        <hr class="my-4">
-        <a class="btn btn-primary btn-lg" href="about.html" role="button">Mira</a>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <br><br><br>
-        <a href="#" class="g" onclick="signOut();">Sign out</a>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #353A3F;">
+        <a class="navbar-brand" href="#">CAFÉ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Usuarios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Categorías</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Productos</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class=" btn btn-outline-success" data-toggle="modal" data-target="#signIn">
+                Sign in
+            </button>
+        </form>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-3"></div>        
+        <div class="col-6">
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="jumbotron text-center">
+        <h1>Sistema de gestion de negocios - CAFÉ</h1>
+        <p>Desarrollado por Vivas Castillo Matías, en un curso de Udemy por Fernando Herrera</p>
     </div>
 
-    <footer>
+    <footer class="footer">
         Matias Gonzalo Vivas Castillo - Todos los derechos reservados
     </footer>
 
@@ -55,6 +81,39 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <script src="./assets/js/bootstrap.min.js"></script>
 
+<!-- Modal de inicio de sesion -->
+<div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Iniciar sesion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Direccion de Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Ingrese su direccion de email.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <small id="passwordHelp" class="form-text text-muted">Ingrese su contraseña.</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <button type="button" href="#" class="btn btn-danger" onclick="signOut();">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
