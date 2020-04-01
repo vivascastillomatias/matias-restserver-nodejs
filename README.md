@@ -80,6 +80,27 @@ CRUD (ABMC)
 
 33- Crear usuarios personalizados en base a respuestas de Google
 
+--------------
+
+34- Carga de archivos
+
+35- Validaciones de archivos
+
+36- Reubicar archivos
+
+37- Actualizar fotografía de un usuario
+
+38- Borrar archivos
+
+n- Cargar imágenes a los productos
+
+39- Servicio para mostrar y proteger imágenes
+
+40- Middleware para verificar token por URL
+
+41- Uso de dichas imágenes en el front-end
+
+
 
 
 
