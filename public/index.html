@@ -7,7 +7,16 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="514081512674-6gjik3sf41i6olvkcct83h7icc0u8hfg.apps.googleusercontent.com">
         
-    <title>Pagina web | Demo</title>
+        <title>Pagina web | Demo</title>
+
+        <!--Requerir los JS-->
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/authentication.js"></script>
+        <script src="./assets/js/funciones.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #353A3F;">
@@ -44,7 +53,16 @@
     <div class="jumbotron text-center">
         <h1>Sistema de gestion de negocios - CAFÉ</h1>
         <p>Desarrollado por Vivas Castillo Matías,curso de Udemy por Fernando Herrera</p>
+        <div class="btn-group btn-group-justified">
+            <button type="button" class="btn btn-dark" onclick="listarUsuarios()">listar usuarios</button>
+            <button type="button" class="btn btn-dark" onclick="listarProductos()">listar productos</button>
+            <button type="button" class="btn btn-dark" onclick="listarCategorias()">listar categorias</button>
+        </div>
+        <table class="table" id="contenidoRespuesta">
+    
+        </table>
     </div>
+
     <!---<div class="jumbotron text-center">
         <img src="http://localhost:3000/image/usuario/5e7bb2a1b47cd636f82033b7__DSC04177.JPG?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJlc3RhZG8iOnRydWUsImdvb2dsZSI6ZmFsc2UsIl9pZCI6IjVlN2JiMzA5YjQ3Y2Q2MzZmODIwMzNiYSIsIm5vbWJyZSI6IkZhbm55IiwiZW1haWwiOiJmYW5ueWNhc3RpbGxvMTQ3OEBnbWFpbC5jb20iLCJfX3YiOjB9LCJpYXQiOjE1ODU3MDE0NDcsImV4cCI6MTU4NTg3NDI0N30.BFYjhT2Fyk2di6Un6HOyR8PqBupjq892LMewVUoZLcc"
          class="img-thumbnail" width="50%">
@@ -53,36 +71,6 @@
         Matias Gonzalo Vivas Castillo - Todos los derechos reservados
     </footer>
 
-    <script>
-        function onSignIn(googleUser) {
-        let profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-        let id_token = googleUser.getAuthResponse().id_token;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/google');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            console.log('Signed in as: ' + xhr.responseText);
-            };
-        xhr.send('idtoken=' + id_token);
-        }
-
-        function signOut() {
-        let auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log('User signed out.');
-        });
-        }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <script src="./assets/js/bootstrap.min.js"></script>
 
 <!-- Modal de inicio de sesion -->
 <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,26 +82,30 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-            <form>
+        <form action="#">
+            <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Direccion de Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" id="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">Ingrese su direccion de email.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" id="password" class="form-control" id="exampleInputPassword1">
                     <small id="passwordHelp" class="form-text text-muted">Ingrese su contraseña.</small>
                 </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <!-- <button type="button" href="#" class="btn btn-danger" onclick="signOut();">Sign out</button>-->
-        </div>
+                <div class="form-group">
+                    <div id="mensaje" class="alert alert-info text-center">...</div>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" onclick="javascript:login($(email).val(), $(password).val())">Login</button>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <!-- <button type="button" href="#" class="btn btn-danger" onclick="signOut();">Sign out</button>-->
+            </div>
+        </form>
       </div>
     </div>
   </div>
