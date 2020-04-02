@@ -17,14 +17,14 @@ app.get('/usuario', verificaToken, (req, res) => {
 
 
     let desde = req.query.desde || 0;
-    let hasta = req.query.hasta || 5;
+    let hasta = req.query.hasta || 8;
 
      //linea para convertir a numero el parámetro que viene como String
     desde = Number(desde);
     hasta = Number(hasta);
 
     //find({Condicion para que sea devuelto en la búsqueda}, [a,b] Campos que se devolverán en el json)
-    Usuario.find({estado: true},['nombre','email','role','google','img'])
+    Usuario.find({estado: true},['estado','nombre','email','role','google','img'])
     .skip(desde) //Salto de registros, se muestran a partir del valor establecido.
     .limit(hasta)//Limite de registros, a partir del valor del skip, la cantidad de registros establecida
     .exec((err, resultado) => {

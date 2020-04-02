@@ -9,7 +9,7 @@ const { verificaToken, verificaAdminRole } = require('../middlewares/authenticat
 //Listar todas las categorías, paginadas
 app.get('/categoria',verificaToken, (req, res) => {
     let desde = req.query.desde || 0;
-    let hasta = req.query.hasta || 5;
+    let hasta = req.query.hasta || 8;
     //linea para convertir a numero el parámetro que viene como String
     desde = Number(desde);
     hasta = Number(hasta);

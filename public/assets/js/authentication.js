@@ -17,8 +17,15 @@ function onSignIn(googleUser) {
         data: {idtoken: id_token}
       };
       
-      $.ajax(settings).done( async function(res) {
+      $.ajax(settings).done( function(res) {
         localStorage.setItem('token', res.token);
+        var emailUsuario = res.usuario.email;
+        $('#email').val(emailUsuario);
+        $('#password').val('**************************');
+        $(mensaje).html("Bienvenido: "+res.usuario.nombre);
+        setTimeout(() => {
+          $(signIn).modal('hide');
+      }, 3000);
       })
       .fail(function(err) {
         localStorage.setItem('token', 'XXXXXXXXXXXXXXX');
